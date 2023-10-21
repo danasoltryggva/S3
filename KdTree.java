@@ -12,6 +12,7 @@ import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.RectHV;
 
 
+
 public class KdTree {
 
     private static final double XMIN = 0.0, XMAX = 1.0, YMIN = 0.0, YMAX = 1.0;
@@ -26,6 +27,8 @@ public class KdTree {
         private Node(Point2D value, RectHV rect) {
             this.p = value;
             this.rect = rect;
+            left = null;
+            right = null;
         }
     }
 
@@ -90,10 +93,10 @@ public class KdTree {
 
     private Point2D contains(Node x, Point2D p, int level) {
         while (x != null) {
-            int cmp = comparePoints(p, x.p, level % 2 == 0);
-            if (cmp < 0) {
+            int compare = comparePoints(p, x.p, level % 2 == 0);
+            if (compare < 0) {
                 x = x.left;
-            } else if (cmp > 0) {
+            } else if (compare > 0) {
                 x = x.right;
             } else {
                 return x.p;
@@ -133,17 +136,17 @@ public class KdTree {
     // all points in the set that are inside the rectangle
     public Iterable<Point2D> range(RectHV rect) {
         Queue<Point2D> queue = new Queue<>();
-        rangeAdd(root, rect, queue);
+        AddToRange(root, rect, queue);
         return queue;
     }
 
-    private void rangeAdd(Node x, RectHV rect, Queue<Point2D> queue) {
+    private void AddToRange(Node x, RectHV rect, Queue<Point2D> queue) {
         if (x == null || !rect.intersects(x.rect)) return;
         if (rect.contains(x.p)) {
             queue.enqueue(x.p);
         }
-        rangeAdd(x.left, rect, queue);
-        rangeAdd(x.right, rect, queue);
+        AddToRange(x.left, rect, queue);
+        AddToRange(x.right, rect, queue);
     }
 
     // a nearest neighbor in the set to p; null if set is empty
@@ -177,8 +180,6 @@ public class KdTree {
         
         In in = new In();
         Out out = new Out();
-
-        out.println("Hello");
 
         int nrOfRecangles = in.readInt();
         int nrOfPointsCont = in.readInt();

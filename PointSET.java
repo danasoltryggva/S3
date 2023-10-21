@@ -11,12 +11,9 @@
  *
  *************************************************************************/
 
-import java.util.Arrays;
-import java.util.TreeSet;
 
+import java.util.TreeSet;
 import edu.princeton.cs.algs4.Point2D;
-import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.RectHV;

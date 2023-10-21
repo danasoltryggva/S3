@@ -1,4 +1,4 @@
-package s3;
+
 
 /******************************************************************************
  *  Compilation:  javac RangeSearchVisualizer.java
