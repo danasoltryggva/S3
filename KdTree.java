@@ -86,7 +86,7 @@ public class KdTree {
             } else {
                 x.right = insert(x.right, value, xmin, x.p.y(), xmax, ymax, level + 1);
             }
-        }
+        }   
 
         return x;
     }
