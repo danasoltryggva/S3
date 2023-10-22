@@ -1,10 +1,10 @@
 
 /****************************************************************************
  *  Compilation:  javac PointSET.java
- *  Execution:    
+ *  Execution: 
  *  Dependencies:
- *  Author:
- *  Date:
+ *  Author: Dana Sól Tryggvadóttir & Karítas Etna Elmarsdóttir
+ *  Date: 22.10.2023
  *
  *  Data structure for maintaining a set of 2-D points, 
  *    including rectangle and nearest-neighbor queries
@@ -38,13 +38,13 @@ public class PointSET {
 
     // add the point p to the set (if it is not already in the set)
     public void insert(Point2D p) {
-        if (p == null) throw new IllegalArgumentException();
+        if (p == null) throw new IllegalArgumentException(); // check for null argument
         pointSet.add(p);
     }
 
     // does the set contain the point p?
     public boolean contains(Point2D p) {
-        if (p == null) throw new IllegalArgumentException();
+        if (p == null) throw new IllegalArgumentException(); // check for null argument
         return pointSet.contains(p);
     }
 

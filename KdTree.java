@@ -1,5 +1,12 @@
-
-/*************************************************************************
+/****************************************************************************
+ *  Compilation:  javac KdTree.java
+ *  Execution: 
+ *  Dependencies:
+ *  Author: Dana Sól Tryggvadóttir & Karítas Etna Elmarsdóttir
+ *  Date: 22.10.2023
+ *
+ * Data structure for maintaining a kd-tree
+ *
  *************************************************************************/
 
 import java.util.Arrays;
@@ -57,6 +64,7 @@ public class KdTree {
         return contains(root, p, 0) != null;
     }
 
+    // compare points by x-coordinate, breaking ties by y-coordinate
     private int comparePoints(Point2D a, Point2D b, boolean compareX) {
         int result = Double.compare(compareX ? a.x() : a.y(), compareX ? b.x() : b.y());
         if (result == 0) {
@@ -65,6 +73,7 @@ public class KdTree {
         return result;
     }
 
+    // insert the point in the node
     private Node insert(Node x, Point2D value, double xmin, double ymin, double xmax, double ymax, int level) {
         if (x == null) {
             size++;
@@ -91,6 +100,7 @@ public class KdTree {
         return x;
     }
 
+    // does the set contain the point p
     private Point2D contains(Node x, Point2D p, int level) {
         while (x != null) {
             int compare = comparePoints(p, x.p, level % 2 == 0);
@@ -112,6 +122,7 @@ public class KdTree {
         drawLine(root, 0);
     }
 
+    // draw all of the points to standard draw
     private void drawLine(Node x, int level) {
         if (x == null) return;
 
@@ -140,6 +151,7 @@ public class KdTree {
         return queue;
     }
 
+    // all points in the set that are inside the rectangle
     private void AddToRange(Node x, RectHV rect, Queue<Point2D> queue) {
         if (x == null || !rect.intersects(x.rect)) return;
         if (rect.contains(x.p)) {
@@ -154,6 +166,7 @@ public class KdTree {
         return isEmpty() ? null : nearest(root, p, null);
     }
 
+    // a nearest neighbor in the set to p; null if set is empty
     private Point2D nearest(Node x, Point2D p, Point2D closest) {
         if (x == null) return closest;
         if (closest == null || closest.distanceSquaredTo(p) >= x.rect.distanceSquaredTo(p)) {
