@@ -15,6 +15,7 @@
 import java.util.TreeSet;
 import edu.princeton.cs.algs4.Point2D;
 import edu.princeton.cs.algs4.StdDraw;
+import edu.princeton.cs.algs4.Stopwatch;
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.RectHV;
 
@@ -87,6 +88,6 @@ public class PointSET {
     }
 
     public static void main(String[] args) {
-    }
 
+    }
 }

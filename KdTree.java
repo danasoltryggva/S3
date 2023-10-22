@@ -15,6 +15,7 @@ import edu.princeton.cs.algs4.Point2D;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.StdDraw;
+import edu.princeton.cs.algs4.Stopwatch;
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.RectHV;
 
@@ -189,10 +190,48 @@ public class KdTree {
     /*******************************************************************************
      * Test client
      ******************************************************************************/
+
+
+    public double buildTreeAndGetTime(Point2D[] points) {
+        Stopwatch timer = new Stopwatch();
+        for (Point2D point : points) {
+            insert(point);
+        }
+        return timer.elapsedTime();
+    }
+    
+    public static Point2D[] generateRandomPoints(int N) {
+        Point2D[] points = new Point2D[N];
+        for (int i = 0; i < N; i++) {
+            double x = Math.random();
+            double y = Math.random();
+            points[i] = new Point2D(x, y);
+        }
+        return points;
+    }
+    
+    // private static int benchmarkNearest(KdTree tree, int durationSeconds) {
+    //     Stopwatch timer = new Stopwatch();
+    //     int count = 0;
+        
+    //     while (timer.elapsedTime() < durationSeconds) {
+    //         double x = Math.random();
+    //         double y = Math.random();
+    //         Point2D randomPoint = new Point2D(x, y);
+            
+    //         tree.nearest(randomPoint);
+    //         count++;
+    //     }
+        
+    //     return count;
+    // }
+
     public static void main(String[] args) {
         
         In in = new In();
         Out out = new Out();
+
+        System.out.println("Starting to read input...");
 
         int nrOfRecangles = in.readInt();
         int nrOfPointsCont = in.readInt();
@@ -200,10 +239,22 @@ public class KdTree {
         RectHV[] rectangles = new RectHV[nrOfRecangles];
         Point2D[] pointsCont = new Point2D[nrOfPointsCont];
         Point2D[] pointsNear = new Point2D[nrOfPointsNear];
-
         
+        // testing for readme
+        int[] N_values = {100, 500, 1000, 5000, 10000, 50000};
+        System.out.println("N\tTime (seconds)");
+        System.out.println("----------------------");
+        for (int N : N_values) {
+            Point2D[] points = generateRandomPoints(N);
+            KdTree tree = new KdTree();
+            double time = tree.buildTreeAndGetTime(points);
+            System.out.printf("%d\t%.4f\n", N, time);
+        }
+        
+        System.out.println("Finished reading initial integers.");
 
         for (int i = 0; i < nrOfRecangles; i++) {
+
             rectangles[i] = new RectHV(in.readDouble(), in.readDouble(),
                     in.readDouble(), in.readDouble());
         }
@@ -245,6 +296,15 @@ public class KdTree {
             out.println((i + 1) + ": " + set.nearest(pointsNear[i]));
         }
 
+
+
         out.println();
+        // int durationSeconds = 1; // measure for 1 second, for example
+        // int opsPerSecondFor100K = benchmarkNearest(yourTreeFor100KData, durationSeconds);
+        // int opsPerSecondFor1M = benchmarkNearest(yourTreeFor1MData, durationSeconds);
+        
+        // System.out.println("2d-tree operations per second for input100K.txt: " + opsPerSecondFor100K);
+        // System.out.println("2d-tree operations per second for input1M.txt: " + opsPerSecondFor1M);
+    
     }
 }
