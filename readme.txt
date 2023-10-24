@@ -110,22 +110,34 @@ N       Time (seconds)
  **********************************************************************/
 We determined the number of operations per second by running 1000000 repetitions of nearest neighbor calculations of each txt input, recording the time with Stopwatch(), and dividing the time elapsed in seconds with the number of repetitions.
 
-Brute-force calculations
+Brute-force 100K points - calculations
 Repetitions = 1000000
-Time elapsed = 0.039 seconds
-Operations per second = repetitions / time elapsed = 2.5641 operations per second
+Time elapsed = 0.059 seconds
+Operations per second = repetitions / time elapsed = 1.69*10^7 operations per second
 
-2d-tree calculations
+2d-tree 100K points - calculations
+Repetitions = 1000000
+Time elapsed = 0.046 seconds
+Operations per second = repetitions / time elapsed = 2.17*10^7 operations per second
+
+Brute-force 1M points - calculations
+Repetitions = 1000000
+Time elapsed = 0.038 seconds
+Operations per second = repetitions / time elapsed = 2.63*10^7 operations per second
+
+2d-tree 1M points - calculations
 Repetitions = 1000000
 Time elapsed = 0.034 seconds
-Operations per second = repetitions / time elapsed = 2.9411 operations per second
+Operations per second = repetitions / time elapsed = 2.94*10^7 operations per second
+
+
 
                      calls to nearest() per second
                      brute force           2d-tree
 
-input100K.txt       
+input100K.txt	1.69*10^7	2.17*10^7
 
-input1M.txt
+input1M.txt	2.63*10^7	2.94*10^7
 
 
 
