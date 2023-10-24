@@ -231,6 +231,14 @@ public class KdTree {
         In in = new In();
         Out out = new Out();
 
+        // int durationSeconds = 1; // measure for 1 second, for example
+        // int opsPerSecondFor100K = benchmarkNearest(yourTreeFor100KData, durationSeconds);
+        // int opsPerSecondFor1M = benchmarkNearest(yourTreeFor1MData, durationSeconds);
+        
+        // System.out.println("2d-tree operations per second for input100K.txt: " + opsPerSecondFor100K);
+        // System.out.println("2d-tree operations per second for input1M.txt: " + opsPerSecondFor1M);
+    
+
         System.out.println("Starting to read input...");
 
         int nrOfRecangles = in.readInt();
@@ -299,12 +307,5 @@ public class KdTree {
 
 
         out.println();
-        // int durationSeconds = 1; // measure for 1 second, for example
-        // int opsPerSecondFor100K = benchmarkNearest(yourTreeFor100KData, durationSeconds);
-        // int opsPerSecondFor1M = benchmarkNearest(yourTreeFor1MData, durationSeconds);
-        
-        // System.out.println("2d-tree operations per second for input100K.txt: " + opsPerSecondFor100K);
-        // System.out.println("2d-tree operations per second for input1M.txt: " + opsPerSecondFor1M);
-    
     }
 }

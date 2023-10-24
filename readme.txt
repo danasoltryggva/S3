@@ -123,7 +123,7 @@ Operations per second = repetitions / time elapsed = 2.9411 operations per secon
                      calls to nearest() per second
                      brute force           2d-tree
 
-input100K.txt
+input100K.txt       
 
 input1M.txt
 
