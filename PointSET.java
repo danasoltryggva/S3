@@ -62,7 +62,9 @@ public class PointSET {
     // all points in the set that are inside the rectangle
     public Iterable<Point2D> range(RectHV rect) {
         Queue<Point2D> foundPoints = new Queue<>();
-    
+
+
+        // Iterate through the set and enqueue points that are inside the given rectangle
         for (Point2D currentPoint : pointSet) {
             if (rect.contains(currentPoint)) {
                 foundPoints.enqueue(currentPoint);
@@ -77,6 +79,7 @@ public class PointSET {
     
         Point2D closest = null;
     
+        // Iterate through the set to find the closest point to the queryPoint
         for (Point2D currentPoint : pointSet) {
             if (closest == null || currentPoint.distanceSquaredTo(queryPoint) < closest.distanceSquaredTo(queryPoint)) {
                 closest = currentPoint;

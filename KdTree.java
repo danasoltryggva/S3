@@ -24,9 +24,10 @@ import edu.princeton.cs.algs4.RectHV;
 public class KdTree {
 
     private static final double XMIN = 0.0, XMAX = 1.0, YMIN = 0.0, YMAX = 1.0;
-    private int size;
-    private Node root;
+    private int size; // number of points
+    private Node root; // root of the kd tree
 
+    // A class to represent nodes in the kd-tree
     private static class Node {
         private final Point2D p;
         private final RectHV rect;
